@@ -21,6 +21,11 @@ function keyPressed() {
   if (key === '7') fillColor = '#fe88b1';
   if (key === '8') fillColor = '#c9db74';
   if (key === '9') fillColor = '#b3b3b3';
+  if (key === 'm' || key === 'M') {
+    n += key === 'm' ? -5 : 5;
+    makeColorMatrix(n);
+    makeGrid(n);
+  }
   console.log('selected tool: ' + tool);
   console.log('fill color: ' + fillColor);
   document.querySelector('.color').style.backgroundColor = fillColor;
@@ -52,6 +57,7 @@ function floodFill(i, j, oldColor, newColor) {
 }
 
 function makeColorMatrix(n) {
+  colors = [];
   for (let i = 0; i < n; i++) {
     let row = [];
     for (let j = 0; j < n; j++) {
